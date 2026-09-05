@@ -1,0 +1,61 @@
+<section class="section">
+  <div class="container container--narrow">
+    <p class="section__eyebrow" appReveal>Conversemos</p>
+    <h1 class="section__title" appReveal [revealDelay]="70">Cuéntame qué necesitas construir</h1>
+    <p class="contact__intro" appReveal [revealDelay]="120">
+      Puedes escribirme aunque todavía no tengas todo definido. Te ayudo a aterrizar la idea,
+      revisar el alcance y encontrar una forma realista de llevarla a software.
+    </p>
+
+    @switch (state()) {
+      @case ('success') {
+        <p class="feedback feedback--success" appReveal [revealDelay]="90">
+          ¡Gracias por tu mensaje! Te responderé lo antes posible.
+        </p>
+      }
+      @case ('error') {
+        <p class="feedback feedback--error" appReveal [revealDelay]="90">
+          Ocurrió un error al enviar el mensaje. Intenta de nuevo en unos minutos.
+        </p>
+      }
+    }
+
+    <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()" appReveal [revealDelay]="130">
+      <label class="field">
+        <span>Nombre</span>
+        <input type="text" formControlName="name" />
+        @if (form.controls.name.invalid && form.controls.name.touched) {
+          <small class="field__error">Ingresa tu nombre (mínimo 2 caracteres).</small>
+        }
+      </label>
+
+      <label class="field">
+        <span>Correo</span>
+        <input type="email" formControlName="email" />
+        @if (form.controls.email.invalid && form.controls.email.touched) {
+          <small class="field__error">Ingresa un correo válido.</small>
+        }
+      </label>
+
+      <label class="field">
+        <span>Asunto</span>
+        <input type="text" formControlName="subject" />
+        @if (form.controls.subject.invalid && form.controls.subject.touched) {
+          <small class="field__error">Ingresa un asunto.</small>
+        }
+      </label>
+
+      <label class="field">
+        <span>Mensaje</span>
+        <textarea rows="5" formControlName="message"></textarea>
+        @if (form.controls.message.invalid && form.controls.message.touched) {
+          <small class="field__error">Escribe un mensaje de al menos 10 caracteres.</small>
+        }
+      </label>
+
+      <button type="submit" class="btn" [disabled]="state() === 'sending'">
+        {{ state() === 'sending' ? 'Enviando…' : 'Enviar mensaje' }}
+      </button>
+    </form>
+  </div>
+</section>

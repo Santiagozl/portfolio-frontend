@@ -1,0 +1,175 @@
+<section class="hero">
+  <div class="hero__visual" appReveal [revealOrigin]="'right'" [revealDelay]="120">
+    <div class="hero__portrait">
+      <span class="hero__portrait-grid" aria-hidden="true"></span>
+      <img [src]="photoUrl" alt="Santiago Zapata Ladino" class="hero__portrait-photo" />
+      <span class="hero__portrait-badge" aria-hidden="true">&lt;/&gt;</span>
+    </div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__text" appReveal [revealOrigin]="'left'">
+      <p class="hero__greeting">Hola, soy</p>
+      <h1 class="hero__name">Santiago Zapata Ladino</h1>
+      <p class="hero__role">Diseño y desarrollo software para necesidades concretas</p>
+      <p class="hero__pitch">
+        Te ayudo a convertir una idea, proceso manual o necesidad interna en una solución clara,
+        rápida y mantenible. Puedo trabajar en web, backend, bases de datos, integraciones,
+        automatización, móvil, escritorio e IA, explicando cada decisión en un lenguaje fácil de entender.
+      </p>
+
+      <div class="hero__actions" appReveal [revealDelay]="150">
+        <a routerLink="/contacto" class="btn">Quiero crear una solución</a>
+        <a routerLink="/proyectos" class="btn btn--outline">Ver experiencia</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--about">
+  <div class="container">
+    <article class="about-panel" appReveal>
+      <div class="about-panel__media">
+        <img [src]="aboutPhotoUrl" alt="Santiago Zapata Ladino tocando batería" class="about-panel__photo" />
+        <span class="about-panel__scanline" aria-hidden="true"></span>
+      </div>
+
+      <div class="about-panel__content">
+        <p class="section__eyebrow">Sobre mí</p>
+        <h2>Así soy cuando no estoy hablando de código</h2>
+        <p>
+          Soy Santiago Zapata Ladino, desarrollador full stack, tengo 22 años y soy tecnólogo en
+          desarrollo de software e ingeniero de sistemas y telecomunicaciones.
+        </p>
+        <p>
+          Trabajo creando soluciones de software completas: aplicaciones web, backend, bases de datos,
+          integraciones, automatizaciones y nuevas experiencias cuando el proyecto lo requiera.
+          También disfruto la música, algo que me ha enseñado disciplina, detalle y constancia.
+        </p>
+
+        <div class="about-panel__facts" aria-label="Datos principales sobre Santiago">
+          <span>Full stack</span>
+          <span>Angular + Spring Boot</span>
+          <span>Software a medida</span>
+          <span>IA en aprendizaje</span>
+          <span>Músico</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section section--value">
+  <div class="container">
+    <p class="section__eyebrow" appReveal>Cómo puedo ayudarte</p>
+    <h2 class="section__title" appReveal [revealDelay]="70">Software claro para problemas reales</h2>
+    <p class="section__intro" appReveal [revealDelay]="120">
+      No necesitas llegar con una especificación técnica perfecta. Puedo ayudarte a ordenar la idea,
+      definir el alcance y construir una solución que funcione para tus usuarios y para tu negocio.
+    </p>
+
+    <div class="value-grid">
+      <article class="card value-card" appReveal [revealDelay]="150">
+        <span class="value-card__index">01</span>
+        <h3>Del problema a una solución usable</h3>
+        <p>
+          Analizo lo que necesitas resolver y lo traduzco en pantallas, flujos y funcionalidades
+          concretas para que el proyecto tenga dirección desde el inicio.
+        </p>
+      </article>
+
+      <article class="card value-card" appReveal [revealDelay]="220">
+        <span class="value-card__index">02</span>
+        <h3>Frontend y backend en una sola visión</h3>
+        <p>
+          Puedo construir tanto la experiencia que ve el usuario como la lógica, APIs, bases de datos
+          e integraciones que hacen que todo funcione por detrás.
+        </p>
+      </article>
+
+      <article class="card value-card" appReveal [revealDelay]="290">
+        <span class="value-card__index">03</span>
+        <h3>Comunicación sin tecnicismos innecesarios</h3>
+        <p>
+          Te explico avances, decisiones y riesgos de forma clara, para que sepas qué se está
+          construyendo y por qué importa para el resultado final.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--process">
+  <div class="container">
+    <p class="section__eyebrow" appReveal>Proceso de trabajo</p>
+    <h2 class="section__title" appReveal [revealDelay]="70">De la idea al software funcionando</h2>
+    <p class="section__intro" appReveal [revealDelay]="120">
+      Trabajo por etapas claras para que sepas qué se está construyendo, por qué se está haciendo
+      y qué resultado puedes esperar en cada entrega.
+    </p>
+
+    <div class="process-grid">
+      <article class="process-step" appReveal [revealDelay]="150">
+        <span class="process-step__number">01</span>
+        <h3>Entender</h3>
+        <p>Revisamos la idea, el problema y las prioridades reales del negocio.</p>
+      </article>
+
+      <article class="process-step" appReveal [revealDelay]="220">
+        <span class="process-step__number">02</span>
+        <h3>Diseñar</h3>
+        <p>Definimos pantallas, flujo, alcance y arquitectura sin complicar lo necesario.</p>
+      </article>
+
+      <article class="process-step" appReveal [revealDelay]="290">
+        <span class="process-step__number">03</span>
+        <h3>Construir</h3>
+        <p>Desarrollo software, backend, bases de datos e integraciones con entregas revisables.</p>
+      </article>
+
+      <article class="process-step" appReveal [revealDelay]="360">
+        <span class="process-step__number">04</span>
+        <h3>Entregar</h3>
+        <p>Dejo una solución clara, mantenible y lista para evolucionar con tu operación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+@if (featuredProjects$ | async; as featuredProjects) {
+  @if (featuredProjects.length) {
+    <section class="section section--featured">
+      <div class="container">
+        <h2 class="section__title" appReveal>Proyectos destacados</h2>
+
+        <div class="featured-grid">
+          @for (project of featuredProjects; track project.id; let i = $index) {
+            <article class="card featured-card" appReveal [revealDelay]="120 + i * 80">
+              <img [src]="project.imageUrl" [alt]="project.title" class="featured-grid__image" />
+              <h3>{{ project.title }}</h3>
+              <p>{{ project.description }}</p>
+            </article>
+          }
+        </div>
+
+        <div class="featured-grid__cta" appReveal [revealDelay]="220">
+          <a routerLink="/proyectos" class="btn btn--outline">Ver todos los proyectos</a>
+        </div>
+      </div>
+    </section>
+  }
+}
+
+<section class="section section--cta">
+  <div class="container">
+    <div class="final-cta" appReveal>
+      <p class="section__eyebrow">Disponible para proyectos freelance</p>
+      <h2>¿Tienes una idea o proceso que quieres convertir en software?</h2>
+      <p>
+        Podemos revisar tu necesidad, ordenar el alcance y construir una primera versión útil sin
+        que tengas que dominar términos técnicos.
+      </p>
+      <a routerLink="/contacto" class="btn">Hablemos de tu proyecto</a>
+    </div>
+  </div>
+</section>

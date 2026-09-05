@@ -1,0 +1,82 @@
+<div class="admin-header">
+  <h1>Experiencia</h1>
+</div>
+
+@if (errorMessage()) {
+  <p class="feedback feedback--error">{{ errorMessage() }}</p>
+}
+
+<form class="admin-form" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>{{ editingId() ? 'Editar experiencia' : 'Nueva experiencia' }}</h2>
+
+  <label class="admin-form__row">
+    <span>Empresa</span>
+    <input type="text" formControlName="company" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Rol / puesto</span>
+    <input type="text" formControlName="role" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Descripción</span>
+    <textarea rows="3" formControlName="description"></textarea>
+  </label>
+
+  <label class="admin-form__row">
+    <span>Fecha de inicio</span>
+    <input type="date" formControlName="startDate" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Fecha de fin (vacío si sigue vigente)</span>
+    <input type="date" formControlName="endDate" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Orden</span>
+    <input type="number" formControlName="sortOrder" />
+  </label>
+
+  <div class="admin-form__actions">
+    <button type="submit" class="btn" [disabled]="saving()">
+      {{ editingId() ? 'Guardar cambios' : 'Crear experiencia' }}
+    </button>
+    @if (editingId()) {
+      <button type="button" class="btn btn--outline" (click)="cancelEdit()">Cancelar</button>
+    }
+  </div>
+</form>
+
+@if (loading()) {
+  <p>Cargando…</p>
+} @else {
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Rol</th>
+        <th>Periodo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of items(); track item.id) {
+        <tr>
+          <td>{{ item.company }}</td>
+          <td>{{ item.role }}</td>
+          <td>{{ item.startDate | slice: 0:10 }} — {{ item.endDate ? (item.endDate | slice: 0:10) : 'Actualidad' }}</td>
+          <td class="admin-table__actions">
+            <button type="button" class="btn btn--outline btn--small" (click)="edit(item)">Editar</button>
+            <button type="button" class="btn btn--danger btn--small" (click)="remove(item)">Eliminar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4">Todavía no hay experiencia registrada.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

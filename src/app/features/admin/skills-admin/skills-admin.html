@@ -1,0 +1,72 @@
+<div class="admin-header">
+  <h1>Skills</h1>
+</div>
+
+@if (errorMessage()) {
+  <p class="feedback feedback--error">{{ errorMessage() }}</p>
+}
+
+<form class="admin-form" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>{{ editingId() ? 'Editar skill' : 'Nueva skill' }}</h2>
+
+  <label class="admin-form__row">
+    <span>Nombre</span>
+    <input type="text" formControlName="name" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Categoría</span>
+    <input type="text" formControlName="category" placeholder="Frontend, Backend, Herramientas…" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Nivel (1 a 5)</span>
+    <input type="number" min="1" max="5" formControlName="level" />
+  </label>
+
+  <label class="admin-form__row">
+    <span>Icono (opcional, clase CSS)</span>
+    <input type="text" formControlName="icon" placeholder="devicon-angularjs-plain" />
+  </label>
+
+  <div class="admin-form__actions">
+    <button type="submit" class="btn" [disabled]="saving()">
+      {{ editingId() ? 'Guardar cambios' : 'Crear skill' }}
+    </button>
+    @if (editingId()) {
+      <button type="button" class="btn btn--outline" (click)="cancelEdit()">Cancelar</button>
+    }
+  </div>
+</form>
+
+@if (loading()) {
+  <p>Cargando…</p>
+} @else {
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Nivel</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (skill of skills(); track skill.id) {
+        <tr>
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.category }}</td>
+          <td>{{ skill.level }}/5</td>
+          <td class="admin-table__actions">
+            <button type="button" class="btn btn--outline btn--small" (click)="edit(skill)">Editar</button>
+            <button type="button" class="btn btn--danger btn--small" (click)="remove(skill)">Eliminar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4">Todavía no hay skills registradas.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

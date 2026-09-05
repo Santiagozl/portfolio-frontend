@@ -1,0 +1,11 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <p>© {{ year }} Santiago Zapata Ladino. Todos los derechos reservados.</p>
+
+    <ul class="footer__social">
+      @for (link of socialLinks; track link.label) {
+        <li><a [href]="link.url" target="_blank" rel="noopener">{{ link.label }}</a></li>
+      }
+    </ul>
+  </div>
+</footer>

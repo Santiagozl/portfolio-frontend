@@ -1,0 +1,29 @@
+<h1>Resumen</h1>
+
+@if (loading()) {
+  <p>Cargando…</p>
+} @else if (counts(); as c) {
+  <div class="dashboard-grid">
+    <a routerLink="/admin/proyectos" class="card dashboard-card">
+      <span class="dashboard-card__value">{{ c.projects }}</span>
+      <span>Proyectos</span>
+    </a>
+
+    <a routerLink="/admin/experiencia" class="card dashboard-card">
+      <span class="dashboard-card__value">{{ c.experience }}</span>
+      <span>Experiencia</span>
+    </a>
+
+    <a routerLink="/admin/skills" class="card dashboard-card">
+      <span class="dashboard-card__value">{{ c.skills }}</span>
+      <span>Skills</span>
+    </a>
+
+    <a routerLink="/admin/mensajes" class="card dashboard-card">
+      <span class="dashboard-card__value">{{ c.unreadMessages }}</span>
+      <span>Mensajes sin leer</span>
+    </a>
+  </div>
+} @else {
+  <p>No se pudo conectar con la API. Verifica que el backend esté corriendo.</p>
+}

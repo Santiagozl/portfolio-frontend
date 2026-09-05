@@ -1,0 +1,39 @@
+<div class="admin-header">
+  <h1>Mensajes de contacto</h1>
+</div>
+
+@if (errorMessage()) {
+  <p class="feedback feedback--error">{{ errorMessage() }}</p>
+}
+
+@if (loading()) {
+  <p>Cargando…</p>
+} @else {
+  <div class="messages-list">
+    @for (message of messages(); track message.id) {
+      <article class="card message-card" [class.message-card--unread]="!message.read">
+        <div class="message-card__header">
+          <div>
+            <strong>{{ message.subject }}</strong>
+            <span class="badge" [class.badge--unread]="!message.read" [class.badge--read]="message.read">
+              {{ message.read ? 'Leído' : 'Nuevo' }}
+            </span>
+          </div>
+          <span>{{ message.createdAt | date: 'dd/MM/y HH:mm' }}</span>
+        </div>
+
+        <p class="message-card__from">{{ message.name }} · {{ message.email }}</p>
+        <p>{{ message.message }}</p>
+
+        <div class="admin-table__actions">
+          <button type="button" class="btn btn--outline btn--small" (click)="toggleRead(message)">
+            {{ message.read ? 'Marcar como no leído' : 'Marcar como leído' }}
+          </button>
+          <button type="button" class="btn btn--danger btn--small" (click)="remove(message)">Eliminar</button>
+        </div>
+      </article>
+    } @empty {
+      <p>Todavía no has recibido mensajes.</p>
+    }
+  </div>
+}

@@ -1,0 +1,31 @@
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 720px;
+}
+
+.message-card--unread {
+  border-color: var(--color-primary);
+}
+
+.message-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+
+  strong {
+    color: var(--color-text);
+    margin-right: 0.5rem;
+  }
+}
+
+.message-card__from {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}

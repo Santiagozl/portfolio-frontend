@@ -1,0 +1,23 @@
+<div class="app-backdrop" aria-hidden="true">
+  <div class="app-backdrop__glow app-backdrop__glow--primary"></div>
+  <div class="app-backdrop__glow app-backdrop__glow--secondary"></div>
+  <div class="app-backdrop__grid"></div>
+</div>
+
+<div class="scroll-progress" [style.transform]="'scaleX(' + scrollProgress() / 100 + ')'"></div>
+
+<div class="scroll-deploy" aria-hidden="true">
+  <span class="scroll-deploy__label">deploy</span>
+  <span class="scroll-deploy__track"></span>
+  <span class="scroll-deploy__rocket" [style.top.%]="scrollProgress()">
+    <span>&lt;/&gt;</span>
+  </span>
+</div>
+
+<app-navbar />
+
+<main class="page">
+  <router-outlet />
+</main>
+
+<app-footer />

@@ -1,0 +1,27 @@
+<div class="admin">
+  <aside class="admin__sidebar">
+    <p class="admin__title">Panel admin</p>
+
+    <nav>
+      <ul>
+        @for (link of links; track link.path) {
+          <li>
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="admin__link--active"
+              [routerLinkActiveOptions]="{ exact: link.path === '/admin' }"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <a routerLink="/" class="admin__back">← Volver al sitio</a>
+  </aside>
+
+  <section class="admin__content">
+    <router-outlet />
+  </section>
+</div>

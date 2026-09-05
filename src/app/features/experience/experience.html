@@ -1,0 +1,30 @@
+<section class="section">
+  <div class="container">
+    <p class="section__eyebrow" appReveal>Trayectoria</p>
+    <h1 class="section__title" appReveal [revealDelay]="70">Experiencia construyendo software en contextos reales</h1>
+    <p class="section__intro" appReveal [revealDelay]="120">
+      He trabajado en soluciones empresariales, sistemas internos e investigación aplicada,
+      conectando necesidades de negocio con desarrollo frontend, backend e integraciones.
+    </p>
+
+    @if (experience$ | async; as items) {
+      @if (items.length) {
+        <ol class="timeline">
+          @for (item of items; track item.id; let i = $index) {
+            <li class="timeline__item card" appReveal [revealDelay]="90 + i * 85">
+              <div class="timeline__dates">
+                {{ item.startDate | date: 'MMM y' }} —
+                {{ item.endDate ? (item.endDate | date: 'MMM y') : 'Actualidad' }}
+              </div>
+              <h2>{{ item.role }}</h2>
+              <p class="timeline__company">{{ item.company }}</p>
+              <p>{{ item.description }}</p>
+            </li>
+          }
+        </ol>
+      } @else {
+        <p class="empty-state" appReveal>Todavía no hay experiencia registrada.</p>
+      }
+    }
+  </div>
+</section>

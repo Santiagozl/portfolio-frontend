@@ -1,0 +1,71 @@
+.container--narrow {
+  max-width: 640px;
+}
+
+.contact__intro {
+  max-width: 530px;
+  margin: 0 auto 1.7rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.contact-form {
+  padding: clamp(1.2rem, 3vw, 1.7rem);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(155deg, rgba(4, 12, 8, 0.94), rgba(0, 0, 0, 0.92)),
+    radial-gradient(circle at 0 0, rgba(var(--color-primary-rgb), 0.1), transparent 48%),
+    radial-gradient(circle at 100% 0, rgba(var(--color-accent-rgb), 0.07), transparent 42%);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+
+  > span {
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.66rem 0.92rem;
+    resize: vertical;
+    transition:
+      border-color var(--transition),
+      background var(--transition),
+      box-shadow var(--transition);
+
+    &:hover {
+      border-color: rgba(var(--color-accent-rgb), 0.34);
+      background: rgba(0, 0, 0, 0.84);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(var(--color-accent-rgb), 0.82);
+      box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb), 0.16);
+    }
+  }
+}
+
+.field__error {
+  color: #fca5a5;
+}
