@@ -1,8 +1,10 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { TitleStrategy, provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
+import { authInterceptor } from './core/auth/auth.interceptor';
+import { PortfolioTitleStrategy } from './core/title/portfolio-title.strategy';
 import { PortfolioDataService } from './core/services/portfolio-data.service';
 import { ApiDataService } from './core/services/api-data.service';
 
@@ -17,10 +19,8 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       })
     ),
-    provideHttpClient(),
-    // Rama full-stack: los componentes dependen de PortfolioDataService,
-    // no de ApiDataService directamente, para poder cambiar de
-    // implementación sin tocar el resto de la app.
+    { provide: TitleStrategy, useClass: PortfolioTitleStrategy },
+    provideHttpClient(withInterceptors([authInterceptor])),
     { provide: PortfolioDataService, useClass: ApiDataService },
-  ]
+  ],
 };

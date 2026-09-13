@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard, guestGuard } from './core/auth/auth.guard';
 import { Home } from './features/home/home';
 import { Projects } from './features/projects/projects';
 import { Experience } from './features/experience/experience';
@@ -12,7 +13,14 @@ export const routes: Routes = [
   { path: 'skills', component: Skills, title: 'Skills' },
   { path: 'contacto', component: Contact, title: 'Contacto' },
   {
+    path: 'admin/login',
+    canActivate: [guestGuard],
+    loadComponent: () => import('./features/admin/login/login').then((m) => m.AdminLogin),
+    title: 'Admin · Entrar',
+  },
+  {
     path: 'admin',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./features/admin/admin-shell/admin-shell').then((m) => m.AdminShell),
     children: [

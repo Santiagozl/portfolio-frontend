@@ -1,5 +1,7 @@
-import { Component, HostListener, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter, map, startWith } from 'rxjs';
 import { Navbar } from './shared/components/navbar/navbar';
 import { Footer } from './shared/components/footer/footer';
 
@@ -7,10 +9,19 @@ import { Footer } from './shared/components/footer/footer';
   selector: 'app-root',
   imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
+  private readonly router = inject(Router);
   readonly scrollProgress = signal(0);
+  readonly isAdminArea = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map(() => this.router.url.startsWith('/admin')),
+      startWith(this.router.url.startsWith('/admin'))
+    ),
+    { initialValue: false }
+  );
 
   constructor() {
     this.updateScrollProgress();

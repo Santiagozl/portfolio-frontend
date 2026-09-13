@@ -4,20 +4,24 @@
   <div class="app-backdrop__grid"></div>
 </div>
 
-<div class="scroll-progress" [style.transform]="'scaleX(' + scrollProgress() / 100 + ')'"></div>
+@if (!isAdminArea()) {
+  <div class="scroll-progress" [style.transform]="'scaleX(' + scrollProgress() / 100 + ')'"></div>
 
-<div class="scroll-deploy" aria-hidden="true">
-  <span class="scroll-deploy__label">deploy</span>
-  <span class="scroll-deploy__track"></span>
-  <span class="scroll-deploy__rocket" [style.top.%]="scrollProgress()">
-    <span>&lt;/&gt;</span>
-  </span>
-</div>
+  <div class="scroll-deploy" aria-hidden="true">
+    <span class="scroll-deploy__label">deploy</span>
+    <span class="scroll-deploy__track"></span>
+    <span class="scroll-deploy__rocket" [style.top.%]="scrollProgress()">
+      <span>&lt;/&gt;</span>
+    </span>
+  </div>
 
-<app-navbar />
+  <app-navbar />
+}
 
-<main class="page">
+<main class="page" [class.page--admin]="isAdminArea()">
   <router-outlet />
 </main>
 
-<app-footer />
+@if (!isAdminArea()) {
+  <app-footer />
+}

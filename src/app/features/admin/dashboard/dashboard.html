@@ -1,4 +1,9 @@
-<h1>Resumen</h1>
+<div class="admin-header">
+  <div>
+    <p class="section__eyebrow">Resumen</p>
+    <h1>Qué hay publicado</h1>
+  </div>
+</div>
 
 @if (loading()) {
   <p>Cargando…</p>
@@ -25,5 +30,7 @@
     </a>
   </div>
 } @else {
-  <p>No se pudo conectar con la API. Verifica que el backend esté corriendo.</p>
+  <p class="feedback feedback--error">
+    No se pudo conectar con la API. Verifica que el backend esté corriendo.
+  </p>
 }

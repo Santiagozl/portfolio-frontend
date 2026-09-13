@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-admin-shell',
@@ -8,6 +9,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './admin-shell.scss',
 })
 export class AdminShell {
+  private readonly auth = inject(AuthService);
+
   readonly links = [
     { path: '/admin', label: 'Resumen' },
     { path: '/admin/proyectos', label: 'Proyectos' },
@@ -15,4 +18,8 @@ export class AdminShell {
     { path: '/admin/skills', label: 'Skills' },
     { path: '/admin/mensajes', label: 'Mensajes' },
   ];
+
+  logout(): void {
+    this.auth.logout();
+  }
 }

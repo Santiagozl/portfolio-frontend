@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  // URL base de la API del backend (rama full-stack).
+  // Reemplaza esto con la URL pública de la API antes de desplegar el frontend.
   apiUrl: 'https://TU-BACKEND-DESPLEGADO.com/api',
 };

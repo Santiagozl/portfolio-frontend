@@ -1,6 +1,7 @@
 <div class="admin">
   <aside class="admin__sidebar">
-    <p class="admin__title">Panel admin</p>
+    <p class="admin__eyebrow">Panel</p>
+    <p class="admin__title">Contenido del sitio</p>
 
     <nav>
       <ul>
@@ -18,7 +19,10 @@
       </ul>
     </nav>
 
-    <a routerLink="/" class="admin__back">← Volver al sitio</a>
+    <div class="admin__footer">
+      <a routerLink="/" class="admin__back">← Ver sitio</a>
+      <button type="button" class="btn btn--outline btn--small" (click)="logout()">Salir</button>
+    </div>
   </aside>
 
   <section class="admin__content">
